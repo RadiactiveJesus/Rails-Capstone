@@ -1,0 +1,24 @@
+// Place all the styles related to the ypages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#articles .text-body{
+    font-size: 30px;
+    list-style-type: none;
+}
+
+#articles .text-muted {
+    list-style-type: none;
+}
+
+#art-between {
+    fborder: none;
+    height: 1px;
+    /* Set the hr color */
+    color: rgb(107, 99, 99); /* old IE */
+    background-color: rgb(107, 99, 99); /* Modern Browsers */
+}
+
+.form-inline.my-2.my-lg-0.ml-auto a {
+    color: white;
+}
