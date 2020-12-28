@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @vote = current_user.votes.build
     @article = Article.find(params[:id])
   end
 

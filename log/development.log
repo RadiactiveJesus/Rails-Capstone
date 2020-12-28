@@ -4726,3 +4726,922 @@ Processing by YpagesController#home as HTML
 Completed 200 OK in 188ms (Views: 147.0ms | ActiveRecord: 27.5ms)
 
 
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3361921874694615750)[0m
+  ↳ bin/rails:9
+  [1m[35m (175.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AdddStatusToVotes (20201223061731)
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (367.0ms)[0m  [1m[35mALTER TABLE "votes" ADD "status" boolean DEFAULT FALSE[0m
+  ↳ db/migrate/20201223061731_addd_status_to_votes.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (2.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201223061731"]]
+  ↳ bin/rails:9
+  [1m[35m (27.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (20.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3361921874694615750)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 127.0.0.1 at 2020-12-23 01:29:07 -0500
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (37.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  Rendered ypages/home.html.erb within layouts/application (178.3ms)
+Completed 500 Internal Server Error in 671ms (ActiveRecord: 54.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `liked_posts' for nil:NilClass):
+    15:             <%= article.text %>
+    16:           </li>
+    17:           <small class="d-flex flex-start">
+    18:             <% if !current_user.liked_posts.ids.include?(@post.id) %>
+    19:               <span> <%= @post.likes.count %> Likes </span>
+    20:               <i>
+    21:                 <%= form_for(@like)do | f | %>
+  
+app/views/ypages/home.html.erb:18:in `block in _app_views_ypages_home_html_erb___4040918975483129193_47345115245460'
+app/views/ypages/home.html.erb:10:in `_app_views_ypages_home_html_erb___4040918975483129193_47345115245460'
+Started GET "/" for 127.0.0.1 at 2020-12-23 01:31:43 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (2.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  Rendered ypages/home.html.erb within layouts/application (72.0ms)
+Completed 500 Internal Server Error in 108ms (ActiveRecord: 17.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `voted_articles' for nil:NilClass):
+    15:             <%= article.text %>
+    16:           </li>
+    17:           <small class="d-flex flex-start">
+    18:             <% if !current_user.voted_articles.ids.include?(@article.id) %>
+    19:               <span> <%= @article.votes.count %> Votes </span>
+    20:               <i>
+    21:                 <%= form_for(@vote)do | f | %>
+  
+app/views/ypages/home.html.erb:18:in `block in _app_views_ypages_home_html_erb___4040918975483129193_70022165734840'
+app/views/ypages/home.html.erb:10:in `_app_views_ypages_home_html_erb___4040918975483129193_70022165734840'
+Started GET "/" for 127.0.0.1 at 2020-12-23 01:34:55 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (1.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  Rendered ypages/home.html.erb within layouts/application (59.7ms)
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 16.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `voted_articles' for nil:NilClass):
+    15:             <%= article.text %>
+    16:           </li>
+    17:           <small class="d-flex flex-start">
+    18:             <% if !current_user.voted_articles.ids.include?(@article.id) %>
+    19:               <span> <%= @article.votes.count %> Votes </span>
+    20:               <i>
+    21:                 <%= form_for(@vote)do | f | %>
+  
+app/views/ypages/home.html.erb:18:in `block in _app_views_ypages_home_html_erb___4040918975483129193_70022165886280'
+app/views/ypages/home.html.erb:10:in `_app_views_ypages_home_html_erb___4040918975483129193_70022165886280'
+Started GET "/" for 127.0.0.1 at 2020-12-23 01:36:57 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  Rendered ypages/home.html.erb within layouts/application (22.5ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `voted_articles' for nil:NilClass):
+    15:             <%= article.text %>
+    16:           </li>
+    17:           <small class="d-flex flex-start">
+    18:             <% if !current_user.voted_articles.ids.include?(@article.id) %>
+    19:               <span> <%= @article.votes.count %> Votes </span>
+    20:               <i>
+    21:                 <%= form_for(@vote)do | f | %>
+  
+app/views/ypages/home.html.erb:18:in `block in _app_views_ypages_home_html_erb___4040918975483129193_70022164352200'
+app/views/ypages/home.html.erb:10:in `_app_views_ypages_home_html_erb___4040918975483129193_70022164352200'
+Started GET "/" for 127.0.0.1 at 2020-12-23 01:38:49 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (2.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  Rendered ypages/home.html.erb within layouts/application (69.7ms)
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 18.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `voted_articles' for nil:NilClass):
+    15:             <%= article.text %>
+    16:           </li>
+    17:           <small class="d-flex flex-start">
+    18:             <% if !current_user.voted_articles.ids.include?(@article.id) %>
+    19:               <span> <%= @article.votes.count %> Votes </span>
+    20:               <i>
+    21:                 <%= form_for(@vote)do | f | %>
+  
+app/views/ypages/home.html.erb:18:in `block in _app_views_ypages_home_html_erb___4040918975483129193_70022164563420'
+app/views/ypages/home.html.erb:10:in `_app_views_ypages_home_html_erb___4040918975483129193_70022164563420'
+Started GET "/" for 127.0.0.1 at 2020-12-23 01:39:33 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (6.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (37.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (95.9ms)
+Completed 200 OK in 2945ms (Views: 2879.0ms | ActiveRecord: 56.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-23 01:41:04 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (17.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (2.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (41.7ms)
+Completed 200 OK in 221ms (Views: 197.9ms | ActiveRecord: 20.3ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2020-12-23 01:41:20 -0500
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (4.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (221.1ms)
+Completed 200 OK in 338ms (Views: 331.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2020-12-23 01:41:23 -0500
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 163ms (Views: 154.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2020-12-23 01:41:26 -0500
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (15.0ms)
+Started GET "/articles/new" for 127.0.0.1 at 2020-12-23 01:41:26 -0500
+Processing by ArticlesController#new as HTML
+Completed 200 OK in 280ms (Views: 274.2ms | ActiveRecord: 1.1ms)
+
+
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (3.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (14.3ms)
+Started GET "/articles/new" for 127.0.0.1 at 2020-12-23 01:41:26 -0500
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (4.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (71.7ms)
+Completed 200 OK in 259ms (Views: 252.3ms | ActiveRecord: 3.8ms)
+
+
+Completed 200 OK in 547ms (Views: 533.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-12-23 01:41:32 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (1.9ms)
+  Rendered devise/registrations/_signup_form.html.erb (45.2ms)
+  Rendered devise/shared/_links.html.erb (3.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (74.6ms)
+Completed 200 OK in 275ms (Views: 192.3ms | ActiveRecord: 25.1ms)
+
+
+Started GET "/articles?main=1" for 127.0.0.1 at 2020-12-23 01:41:37 -0500
+Processing by ArticlesController#index as HTML
+  Parameters: {"main"=>"1"}
+  [1m[36mVote Exists (3.3ms)[0m  [1m[34mSELECT  1 AS one FROM "votes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/article.rb:11
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (2.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:11
+  [1m[36mCategory Load (2.8ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."priority" ASC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/articles/index.html.erb:20
+  [1m[36mArticle Load (2.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."category_id" IN ($1, $2)[0m  [["category_id", 1], ["category_id", 2]]
+  ↳ app/views/articles/index.html.erb:20
+  Rendered articles/index.html.erb within layouts/application (170.0ms)
+Completed 200 OK in 346ms (Views: 269.7ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-12-23 01:41:44 -0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (6.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 118ms (Views: 110.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2020-12-23 01:41:52 -0500
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5jriPPFAIVxf4DhaGTgOKwm9l7KJtM3KF+4b/rHViO7DH+z21pTEko1wTGuWsPfKkLavRp2lIfEnwKJevFJMCg==", "user"=>{"username"=>"myuser", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (70.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["username", "myuser"], ["LIMIT", 1]]
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 199ms (ActiveRecord: 70.9ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5jriPPFAIVxf4DhaGTgOKwm9l7KJtM3KF+4b/rHViO7DH+z21pTEko1wTGuWsPfKkLavRp2lIfEnwKJevFJMCg==", "user"=>{"username"=>"myuser", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 823ms (Views: 86.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-12-23 01:41:57 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (1.5ms)
+  Rendered devise/registrations/_signup_form.html.erb (12.7ms)
+  Rendered devise/shared/_links.html.erb (3.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 240ms (Views: 235.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-12-23 01:42:03 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"AW5eeCGZf5HO/ekEuxRBTw2qZzYBmYDluq2lUhNiUzVojBTHV89ORgFQwptjG7IG8B71QEeXsvIYEcIcStK4+Q==", "user"=>{"username"=>"user", "password"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (22.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (98.2ms)[0m  [1m[32mINSERT INTO "users" ("encrypted_password", "created_at", "updated_at", "username") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_password", "$2a$12$yQ0LFJZeh0n8FapDPP.zSuxQOEz5SwaZmheUPbSHoJk7nCOxfDZuu"], ["created_at", "2020-12-23 06:42:03.995384"], ["updated_at", "2020-12-23 06:42:03.995384"], ["username", "user"]]
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (9.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 736ms (ActiveRecord: 129.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-23 01:42:04 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (3.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (1.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (19.5ms)
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 122ms (Views: 109.6ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2020-12-23 01:42:08 -0500
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (14.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (30.3ms)
+  [1m[36mUser Load (18.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 301ms (Views: 252.5ms | ActiveRecord: 33.5ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2020-12-23 01:42:21 -0500
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FOblM1AgRua3s8WWwkMzTqF9xBKrM6iSEzEU/5n5KL+RJkwmt4I4U/rFYvAlp2cUqYkKADyx6YWp2df4dzBaWQ==", "article"=>{"title"=>"test", "text"=>"test", "category_id"=>"1"}, "commit"=>"Create Article"}
+  [1m[36mUser Load (8.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:18
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/articles_controller.rb:20
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (1.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (24.4ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 327ms (Views: 134.1ms | ActiveRecord: 14.6ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2020-12-23 01:42:40 -0500
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"msSW6ciDzC9xGOlEhYXsseTQG14DLE3DEv7s376H0ZEBniWbhh7F7PnIHwzWlFry0VH18gsrFCESUzVx0bZZ2Q==", "article"=>{"title"=>"testwith", "text"=>"testwith", "category_id"=>"1"}, "commit"=>"Create Article"}
+  [1m[36mUser Load (13.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:18
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mCategory Load (5.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/articles_controller.rb:20
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (3.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (17.1ms)
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 166ms (Views: 95.8ms | ActiveRecord: 27.5ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2020-12-23 01:43:02 -0500
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"z03EjN69z+zP+sH9Eeu6TKtisRlNKFKxDv7/QAMUFLpUF3f+kCDGL0cqN7VC+gwPnuNftUUvC1MOUybubCWc8g==", "article"=>{"title"=>"testwith", "text"=>"testwith", "category_id"=>"1"}, "commit"=>"Create Article"}
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:18
+  [1m[35m (4.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mArticle Create (27.7ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at", "category_id", "author_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "testwith"], ["text", "testwith"], ["created_at", "2020-12-23 06:43:03.156986"], ["updated_at", "2020-12-23 06:43:03.156986"], ["category_id", 1], ["author_id", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[35m (52.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:20
+Redirected to http://localhost:3000/articles/4
+Completed 302 Found in 404ms (ActiveRecord: 145.9ms)
+
+
+Started GET "/articles/4" for 127.0.0.1 at 2020-12-23 01:43:03 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:7
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "articles"."id" FROM "articles" INNER JOIN "votes" ON "articles"."id" = "votes"."article_id" WHERE "votes"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/articles/show.html.erb:7
+  [1m[35m (35.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."article_id" = $1[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:8
+  Rendered articles/show.html.erb within layouts/application (188.2ms)
+Completed 500 Internal Server Error in 217ms (ActiveRecord: 52.5ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+     7:     <% if !current_user.voted_articles.ids.include?(@article.id) %>
+     8:         <span> <%= @article.votes.count %> Votes </span>
+     9:         <i>
+    10:         <%= form_for(@vote)do | f | %>
+    11:             <%= f.hidden_field :article_id, value: @article.id%>
+    12:             <%= f.hidden_field :status, value: :true %>
+    13:             <%= f.submit "Vote" %>
+  
+app/views/articles/show.html.erb:10:in `_app_views_articles_show_html_erb___404442582001988719_70022171100720'
+Started GET "/articles?main=2" for 127.0.0.1 at 2020-12-23 01:47:36 -0500
+Processing by ArticlesController#index as HTML
+  Parameters: {"main"=>"2"}
+  [1m[36mVote Exists (7.3ms)[0m  [1m[34mSELECT  1 AS one FROM "votes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/article.rb:11
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (3.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:11
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."priority" ASC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/articles/index.html.erb:20
+  [1m[36mArticle Load (12.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."category_id" IN ($1, $2)[0m  [["category_id", 1], ["category_id", 2]]
+  ↳ app/views/articles/index.html.erb:20
+  Rendered articles/index.html.erb within layouts/application (57.0ms)
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 242ms (Views: 206.3ms | ActiveRecord: 27.2ms)
+
+
+Started GET "/articles/index" for 127.0.0.1 at 2020-12-23 01:47:52 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mArticle Load (4.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+Completed 404 Not Found in 26ms (ActiveRecord: 4.5ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Article with 'id'=index):
+  
+app/controllers/articles_controller.rb:14:in `show'
+Started GET "/articles/4" for 127.0.0.1 at 2020-12-23 01:59:06 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (3.4ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (2.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:7
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "articles"."id" FROM "articles" INNER JOIN "votes" ON "articles"."id" = "votes"."article_id" WHERE "votes"."user_id" = $1[0m  [["user_id", 6]]
+  ↳ app/views/articles/show.html.erb:7
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."article_id" = $1[0m  [["article_id", 4]]
+  ↳ app/views/articles/show.html.erb:8
+  Rendered articles/show.html.erb within layouts/application (45.9ms)
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 19.2ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+     7:     <% if !current_user.voted_articles.ids.include?(@article.id) %>
+     8:         <span> <%= @article.votes.count %> Votes </span>
+     9:         <i>
+    10:             <%= form_for(@vote)do | f | %>
+    11:             <%= f.hidden_field :article_id, value: @article.id%>
+    12:             <%= f.hidden_field :status, value: :true %>
+    13:             <%= f.submit "Vote" %>
+  
+app/views/articles/show.html.erb:10:in `_app_views_articles_show_html_erb___404442582001988719_70022173709200'
+Started GET "/articles/4" for 127.0.0.1 at 2020-12-23 02:02:34 -0500
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (1.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (3.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  Rendered articles/show.html.erb within layouts/application (192.7ms)
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 1788ms (Views: 1469.1ms | ActiveRecord: 64.8ms)
+
+
+Started GET "/articles/4" for 127.0.0.1 at 2020-12-23 02:03:06 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mArticle Load (1.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (2.9ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:4
+  Rendered articles/show.html.erb within layouts/application (29.3ms)
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 184ms (Views: 139.5ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-23 02:03:08 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (3.9ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (2.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (28.8ms)
+  [1m[36mUser Load (7.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 121ms (Views: 99.6ms | ActiveRecord: 13.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2020-12-23 02:03:16 -0500
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/a3I3RuEhyvLO0zXA/Nctphkj1X/3QjJNFJ6xgy/mPFm93uvVRmO6EPrup9Q4ur1reVh+ffaUSs0/6NoY44QuQ=="}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 99ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-23 02:03:16 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (2.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (2.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 125ms (Views: 116.8ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-23 02:03:24 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (2.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (3.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 146ms (Views: 118.1ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-12-23 02:10:20 -0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (2.0ms)
+  Rendered devise/registrations/_signup_form.html.erb (1291.6ms)
+  Rendered devise/shared/_links.html.erb (6.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (2116.7ms)
+Completed 200 OK in 2608ms (Views: 2601.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-12-23 02:10:35 -0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"50JqhDhJ02kntYbY0chcZyyEV6iW4CvK/4zw414vvMWnPvQ5fTahAVPqmCW3dL9LITWv+1e1nWEdGjyzYdL2dw==", "user"=>{"username"=>"Marshall", "password"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (4.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (8.1ms)[0m  [1m[32mINSERT INTO "users" ("encrypted_password", "created_at", "updated_at", "username") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["encrypted_password", "$2a$12$rO947uu9LdrME1gyFZd8k.R10.QQCviisVg9xiMnxdRHg9sTX04Iu"], ["created_at", "2020-12-23 07:10:37.214647"], ["updated_at", "2020-12-23 07:10:37.214647"], ["username", "Marshall"]]
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (12.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 1511ms (ActiveRecord: 25.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-23 02:10:37 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (5.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (2.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (22.7ms)
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 251ms (Views: 168.9ms | ActiveRecord: 22.2ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2020-12-23 02:11:45 -0500
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (4.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (163.5ms)
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 428ms (Views: 409.7ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2020-12-23 02:12:43 -0500
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z/3YxKvlBYTPMlTxJIvf+lmnI5wgzbXN9ToX+BKcTvBFa4NSlJ5VGaf9umoB1r+TnfzjDDzucHwJBcb9VoOjrw==", "article"=>{"title"=>"Anything 123", "text"=>"any content for article", "category_id"=>"1"}, "commit"=>"Create Article"}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:18
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mUser Load (4.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mCategory Load (3.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mArticle Create (3.4ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at", "category_id", "author_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Anything 123"], ["text", "any content for article"], ["created_at", "2020-12-23 07:12:43.925813"], ["updated_at", "2020-12-23 07:12:43.925813"], ["category_id", 1], ["author_id", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:20
+Redirected to http://localhost:3000/articles/5
+Completed 302 Found in 256ms (ActiveRecord: 22.9ms)
+
+
+Started GET "/articles/5" for 127.0.0.1 at 2020-12-23 02:12:43 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mArticle Load (3.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (4.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:4
+  Rendered articles/show.html.erb within layouts/application (15.9ms)
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 197ms (Views: 160.8ms | ActiveRecord: 9.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-23 02:13:04 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (3.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (10.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (29.2ms)
+  [1m[36mUser Load (9.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 427ms (Views: 379.6ms | ActiveRecord: 22.3ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2020-12-23 02:13:53 -0500
+Processing by CategoriesController#new as HTML
+  Rendering categories/new.html.erb within layouts/application
+  Rendered categories/_form.html.erb (23.1ms)
+  Rendered categories/new.html.erb within layouts/application (32.8ms)
+  [1m[36mUser Load (9.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 258ms (Views: 232.1ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-23 02:16:08 -0500
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (1.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (23.7ms)
+  [1m[36mUser Load (92.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 402ms (Views: 294.7ms | ActiveRecord: 95.5ms)
+
+
+Started GET "/articles/new" for 127.0.0.1 at 2020-12-23 02:17:59 -0500
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/articles/new.html.erb:30
+  Rendered articles/new.html.erb within layouts/application (13.1ms)
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 182ms (Views: 172.4ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/articles" for 127.0.0.1 at 2020-12-23 02:18:21 -0500
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bG/spnTQnTOzJX/4usTGwltQe/PQmJM7iIBXzQ+4BFJO+bcwS6vNrtvqkWOfmaarnwu7Y8y7Vop0v4bIS6fpDQ==", "article"=>{"title"=>"testingvotes", "text"=>"votetesting", "category_id"=>"2"}, "commit"=>"Create Article"}
+  [1m[36mUser Load (12.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:18
+  [1m[35m (33.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mCategory Load (3.7ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[36mArticle Create (2.5ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "created_at", "updated_at", "category_id", "author_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "testingvotes"], ["text", "votetesting"], ["created_at", "2020-12-23 07:18:21.219061"], ["updated_at", "2020-12-23 07:18:21.219061"], ["category_id", 2], ["author_id", 1]]
+  ↳ app/controllers/articles_controller.rb:20
+  [1m[35m (11.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/articles_controller.rb:20
+Redirected to http://localhost:3000/articles/6
+Completed 302 Found in 132ms (ActiveRecord: 68.5ms)
+
+
+Started GET "/articles/6" for 127.0.0.1 at 2020-12-23 02:18:21 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mArticle Load (3.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (2.7ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:7
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT "articles"."id" FROM "articles" INNER JOIN "votes" ON "articles"."id" = "votes"."article_id" WHERE "votes"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/articles/show.html.erb:7
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."article_id" = $1[0m  [["article_id", 6]]
+  ↳ app/views/articles/show.html.erb:8
+  Rendered articles/show.html.erb within layouts/application (855.8ms)
+Completed 500 Internal Server Error in 874ms (ActiveRecord: 30.6ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+     7:     <% if !current_user.voted_articles.ids.include?(@article.id) %>
+     8:         <span> <%= @article.votes.count %> Votes </span>
+     9:         <i>
+    10:             <%= form_for(@vote)do | f | %>
+    11:             <%= f.hidden_field :article_id, value: @article.id%>
+    12:             <%= f.hidden_field :status, value: :true %>
+    13:             <%= f.submit "Vote" %>
+  
+app/views/articles/show.html.erb:10:in `_app_views_articles_show_html_erb__2789529275880558076_70055897139220'
+Started GET "/articles/6" for 127.0.0.1 at 2020-12-23 02:22:12 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+Completed 500 Internal Server Error in 895ms (ActiveRecord: 26.0ms)
+
+
+  
+NameError (undefined local variable or method `vote_params' for #<ArticlesController:0x00007f6e51a345f0>
+Did you mean?  vote_path):
+  
+app/controllers/articles_controller.rb:14:in `show'
+Started GET "/articles/6" for 127.0.0.1 at 2020-12-23 02:23:02 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:15
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (2.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "articles"."id" FROM "articles" INNER JOIN "votes" ON "articles"."id" = "votes"."article_id" WHERE "votes"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/articles/show.html.erb:7
+  [1m[35m (5.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."article_id" = $1[0m  [["article_id", 6]]
+  ↳ app/views/articles/show.html.erb:8
+  Rendered articles/show.html.erb within layouts/application (149.1ms)
+Completed 200 OK in 608ms (Views: 255.2ms | ActiveRecord: 94.6ms)
+
+
+Started POST "/votes" for 127.0.0.1 at 2020-12-23 02:23:20 -0500
+Processing by VotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/0tHeOeykmCzMA1twvmnAQkk1h6xgcc7wN5mBF7SiTBTlyUaS6ViI0vhggcV5WJxaBEfGKBPvKgoTsRsUpa0gw==", "vote"=>{"article_id"=>"6", "status"=>"true"}, "commit"=>"Vote"}
+  [1m[36mUser Load (6.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/votes_controller.rb:3
+  [1m[35m (8.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/votes_controller.rb:4
+  [1m[36mArticle Load (10.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/votes_controller.rb:4
+  [1m[36mVote Create (40.8ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "article_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 7], ["article_id", 6], ["created_at", "2020-12-23 07:23:20.347403"], ["updated_at", "2020-12-23 07:23:20.347403"], ["status", true]]
+  ↳ app/controllers/votes_controller.rb:4
+  [1m[35m (9.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/votes_controller.rb:4
+Redirected to http://localhost:3000/articles/6
+Completed 302 Found in 173ms (ActiveRecord: 79.1ms)
+
+
+Started GET "/articles/6" for 127.0.0.1 at 2020-12-23 02:23:20 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  [1m[36mArticle Load (3.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:15
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (7.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:5
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "articles"."id" FROM "articles" INNER JOIN "votes" ON "articles"."id" = "votes"."article_id" WHERE "votes"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/articles/show.html.erb:7
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."article_id" = $1[0m  [["article_id", 6]]
+  ↳ app/views/articles/show.html.erb:18
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "votes"."id" FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/articles/show.html.erb:19
+  Rendered articles/show.html.erb within layouts/application (51.3ms)
+Completed 200 OK in 165ms (Views: 123.4ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-12-27 21:17:25 -0500
+  [1m[35m (55.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/neo/.rbenv/versions/2.6.0/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by YpagesController#home as HTML
+  Rendering ypages/home.html.erb within layouts/application
+  [1m[36mArticle Load (179.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/ypages/home.html.erb:10
+  [1m[36mCategory Load (292.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/ypages/home.html.erb:25
+  Rendered ypages/home.html.erb within layouts/application (816.3ms)
+  [1m[36mUser Load (79.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 3281ms (Views: 2388.4ms | ActiveRecord: 660.3ms)
+
+
+Started GET "/articles" for 127.0.0.1 at 2020-12-27 21:18:05 -0500
+Processing by ArticlesController#index as HTML
+  [1m[36mVote Exists (296.3ms)[0m  [1m[34mSELECT  1 AS one FROM "votes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/article.rb:11
+  [1m[35m (138.4ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "votes"."article_id" AS votes_article_id FROM "votes" GROUP BY "votes"."article_id"[0m
+  ↳ app/models/article.rb:12
+  [1m[36mArticle Load (2.8ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/article.rb:13
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (3.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:11
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."priority" ASC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/articles/index.html.erb:20
+  [1m[36mArticle Load (2.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."category_id" IN ($1, $2)[0m  [["category_id", 1], ["category_id", 2]]
+  ↳ app/views/articles/index.html.erb:20
+  Rendered articles/index.html.erb within layouts/application (185.1ms)
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 900ms (Views: 252.2ms | ActiveRecord: 453.3ms)
+
+
+Started GET "/articles?main=1" for 127.0.0.1 at 2020-12-27 21:18:11 -0500
+Processing by ArticlesController#index as HTML
+  Parameters: {"main"=>"1"}
+  [1m[36mVote Exists (5.4ms)[0m  [1m[34mSELECT  1 AS one FROM "votes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/article.rb:11
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "votes"."article_id" AS votes_article_id FROM "votes" GROUP BY "votes"."article_id"[0m
+  ↳ app/models/article.rb:12
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/article.rb:13
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:11
+  [1m[36mCategory Load (1.8ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."priority" ASC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/articles/index.html.erb:20
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."category_id" IN ($1, $2)[0m  [["category_id", 1], ["category_id", 2]]
+  ↳ app/views/articles/index.html.erb:20
+  Rendered articles/index.html.erb within layouts/application (26.0ms)
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 392ms (Views: 326.4ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/articles?main=1" for 127.0.0.1 at 2020-12-27 21:18:17 -0500
+Processing by ArticlesController#index as HTML
+  Parameters: {"main"=>"1"}
+  [1m[36mVote Exists (3.9ms)[0m  [1m[34mSELECT  1 AS one FROM "votes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/article.rb:11
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "votes"."article_id" AS votes_article_id FROM "votes" GROUP BY "votes"."article_id"[0m
+  ↳ app/models/article.rb:12
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/article.rb:13
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (4.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:11
+  [1m[36mCategory Load (6.7ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."priority" ASC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/articles/index.html.erb:20
+  [1m[36mArticle Load (2.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."category_id" IN ($1, $2)[0m  [["category_id", 1], ["category_id", 2]]
+  ↳ app/views/articles/index.html.erb:20
+  Rendered articles/index.html.erb within layouts/application (34.2ms)
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 256ms (Views: 165.1ms | ActiveRecord: 24.1ms)
+
+
+Started GET "/articles?main=2" for 127.0.0.1 at 2020-12-27 21:18:20 -0500
+Processing by ArticlesController#index as HTML
+  Parameters: {"main"=>"2"}
+  [1m[36mVote Exists (6.4ms)[0m  [1m[34mSELECT  1 AS one FROM "votes" LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/models/article.rb:11
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "votes"."article_id" AS votes_article_id FROM "votes" GROUP BY "votes"."article_id"[0m
+  ↳ app/models/article.rb:12
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/models/article.rb:13
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (10.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:11
+  [1m[36mCategory Load (2.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."priority" ASC LIMIT $1[0m  [["LIMIT", 5]]
+  ↳ app/views/articles/index.html.erb:20
+  [1m[36mArticle Load (2.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."category_id" IN ($1, $2)[0m  [["category_id", 1], ["category_id", 2]]
+  ↳ app/views/articles/index.html.erb:20
+  Rendered articles/index.html.erb within layouts/application (30.3ms)
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:36
+Completed 200 OK in 249ms (Views: 180.3ms | ActiveRecord: 25.9ms)
+
+
+Started GET "/articles/5" for 127.0.0.1 at 2020-12-27 21:18:32 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (8.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  [1m[36mArticle Load (2.5ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:15
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (2.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:6
+  [1m[35m (33.8ms)[0m  [1m[34mSELECT "articles"."id" FROM "articles" INNER JOIN "votes" ON "articles"."id" = "votes"."article_id" WHERE "votes"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/articles/show.html.erb:8
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."article_id" = $1[0m  [["article_id", 5]]
+  ↳ app/views/articles/show.html.erb:9
+  Rendered articles/show.html.erb within layouts/application (244.4ms)
+Completed 200 OK in 462ms (Views: 281.2ms | ActiveRecord: 54.8ms)
+
+
+Started POST "/votes" for 127.0.0.1 at 2020-12-27 21:18:39 -0500
+Processing by VotesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0l2GGxHAsahWgDIRHj3jaIxrdmUGqll1icjJ8AuZTyN+geR5vddB665RvXvJISYY7V6/YxdkIuZhWGuYB91ykA==", "vote"=>{"article_id"=>"5", "status"=>"true"}, "commit"=>"Vote"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/votes_controller.rb:3
+  [1m[35m (3.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/votes_controller.rb:4
+  [1m[36mArticle Load (2.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/votes_controller.rb:4
+  [1m[36mVote Create (250.5ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "article_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 7], ["article_id", 5], ["created_at", "2020-12-28 02:18:39.183624"], ["updated_at", "2020-12-28 02:18:39.183624"], ["status", true]]
+  ↳ app/controllers/votes_controller.rb:4
+  [1m[35m (15.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/votes_controller.rb:4
+Redirected to http://localhost:3000/articles/5
+Completed 302 Found in 301ms (ActiveRecord: 273.1ms)
+
+
+Started GET "/articles/5" for 127.0.0.1 at 2020-12-27 21:18:39 -0500
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:14
+  [1m[36mArticle Load (3.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:15
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mCategory Load (3.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/articles/show.html.erb:6
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "articles"."id" FROM "articles" INNER JOIN "votes" ON "articles"."id" = "votes"."article_id" WHERE "votes"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/articles/show.html.erb:8
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."article_id" = $1[0m  [["article_id", 5]]
+  ↳ app/views/articles/show.html.erb:19
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT "votes"."id" FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 7]]
+  ↳ app/views/articles/show.html.erb:20
+  Rendered articles/show.html.erb within layouts/application (48.1ms)
+Completed 200 OK in 151ms (Views: 114.7ms | ActiveRecord: 20.9ms)
+
+

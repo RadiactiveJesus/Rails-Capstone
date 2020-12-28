@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  get 'votes/create'
+  get 'votes/destroy'
   root to: "ypages#home"
+  resources :votes, only: [:create, :destroy]
   resources :categories
   resources :articles
   devise_for :users

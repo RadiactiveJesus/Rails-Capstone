@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :votes, dependent: :destroy
   has_many :articles, foreign_key: 'author_id', class_name: 'Article'
+  has_many :voted_articles, through: :votes, source: 'article'
 
   def email_required?
     false
