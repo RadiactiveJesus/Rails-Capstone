@@ -2,7 +2,10 @@
     <h1><%= @article.title %></h1>
     <p><%= @article.text %></p>
     <h1>Category: <%= @article.category.name %></h1>
-    <small class="d-flex flex-start">
+    <small class="d-flex flex-start flex-direction-row">
+        <% if @article.image.attached? %>
+            <%= image_tag @article.image.variant(resize: "200x200") %>
+        <% end %>
         <% if !current_user.voted_articles.ids.include?(@article.id) %>
             <span> <%= @article.votes.count %> Votes </span>
             <i>

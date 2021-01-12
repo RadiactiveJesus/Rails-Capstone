@@ -32,8 +32,10 @@ gem 'paperclip', '~> 6.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 gem 'devise', '~> 4.2'
 
+
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
+gem 'image_processing', '~> 1.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
