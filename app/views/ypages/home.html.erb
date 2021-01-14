@@ -5,6 +5,15 @@
     <p class="lead">Welcome</p>
     <hr>
     <h1 class="display-4">Articles</h1>
+    <% if @articles.collect(&:image).detect(&:attached?) %>
+      <div class="featured p-3" style="background-image: url(<%= main_image %>)">
+        <%= image_tag main_image , class: "imgfeature" %>
+          <div class="featured_text">
+            <p class="icons1"><%= main_article_title%></p>
+            <p>Votes: <%= count_votes %></>
+          </div>
+      </div>
+    <% end %>
     <div class="card">
       <ul id="articles" class="card-body">
         <% @articles.each do |article| %>

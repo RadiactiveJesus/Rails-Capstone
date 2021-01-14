@@ -31,6 +31,7 @@ gem 'figaro', '~> 1.2'
 gem 'paperclip', '~> 6.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 gem 'devise', '~> 4.2'
+gem 'active_model_serializers', '~> 0.10.10'
 
 
 # Use ActiveStorage variant

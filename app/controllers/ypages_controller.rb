@@ -3,12 +3,7 @@ class YpagesController < ApplicationController
   def home
     @categories= Category.all
     main = params[:main]
-    unless main.nil?
-      @articles = Article.where(:category_id => main)
-    else
-
      @articles = Article.all  
-    end
   end
   
   def new

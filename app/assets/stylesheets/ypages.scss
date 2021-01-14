@@ -39,3 +39,23 @@ a:hover {
 .form-inline.my-2.my-lg-0.ml-auto a {
     color: white;
 }
+
+.featured {
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  grid-column: 1 / span 4;
+  position: relative;
+  color: #fff;
+}
+
+.article-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.imgfeature {
+    width: 400px;
+}
