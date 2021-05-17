@@ -1,11 +1,20 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[show destroy]
+  before_action :authenticate_user!
   before_action :current_user
 
   def index
-    @articles = Article.all
+    cate = params[:cate]
+
+    if !cate.nil?
+      @articles = Article.where(:category_id => cate)
+
+    else
+      @articles = Article.all
+
+    end
     @featured = Article.featured_article
-    @categories = Category.order(:priority).limit(5).includes(:articles)
+    @categories = Category.all
   end
 
   def new
@@ -13,8 +22,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @vote = current_user.votes.build
     @article = Article.find(params[:id])
+    @categories = Category.all
   end
 
   def create
@@ -43,7 +52,7 @@ class ArticlesController < ApplicationController
   # end
 
   def article_params
-    params.require(:article).permit(:title,:text, :category_id, :image)
+    params.require(:article).permit(:title,:text, :image, :category_id)
   end
 
   def set_article

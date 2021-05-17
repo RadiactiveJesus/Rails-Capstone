@@ -1,11 +1,19 @@
 class VotesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :find_article
+
   def create
-    @vote = current_user.votes.build(vote_params)
-    if @vote.save
-      flash[:success] = 'You liked this'
+    if already_liked?
+      flash[:notice] = "You can't like more than once"
     else
-      flash[:warning] = 'Please, try again'
+      @article.likes.create(user_id: current_user.id)
+      if @vote.save
+        flash[:success] = 'You liked this'
+      else
+        flash[:warning] = 'Please, try again'
+      end
     end
+    
     redirect_back fallback_location: @vote
   end
 
@@ -21,4 +29,17 @@ class VotesController < ApplicationController
   def vote_params
     params.require(:vote).permit(:user_id, :article_id, :status)
   end
+
+  def find_article
+    @article = Article.find(params[:article_id])
+  end
+
+  def already_liked?
+    Vote.where(user_id: current_user.id, article_id:
+    params[:article_id]).exists?
+  end
+
+  def find_like
+    @like = @article.votes.find(params[:id])
+ end
 end

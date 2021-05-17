@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /categories
   # GET /categories.json
@@ -70,6 +71,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:name, :priority)
+      params.require(:category).permit(:name, :priority, :category_id)
     end
 end
