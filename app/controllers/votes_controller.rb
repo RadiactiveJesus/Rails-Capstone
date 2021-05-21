@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  before_action :current_user, only: %i[create destroy]
   before_action :authenticate_user!
   before_action :find_article
 
@@ -6,7 +7,7 @@ class VotesController < ApplicationController
     if already_liked?
       flash[:notice] = "You can't like more than once"
     else
-      @article.likes.create(user_id: current_user.id)
+      @vote = @current_user.votes.new(article_id: params[:article_id])
       if @vote.save
         flash[:success] = 'You liked this'
       else
@@ -20,8 +21,10 @@ class VotesController < ApplicationController
   def destroy
     @vote = Vote.find(params[:id])
     @vote.destroy
-    flash[:warning] = 'You no longer like this'
-    redirect_back fallback_location: @vote
+    respond_to do |format|
+        format.html { redirect_back fallback_location: @vote, notice: 'Unvoted.' }
+        format.json { head :no_content }
+    end
   end
 
   private
@@ -35,8 +38,9 @@ class VotesController < ApplicationController
   end
 
   def already_liked?
-    Vote.where(user_id: current_user.id, article_id:
-    params[:article_id]).exists?
+    if Vote.find_by(user: @current_user, article: @article)
+      return true
+    end
   end
 
   def find_like

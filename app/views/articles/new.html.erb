@@ -27,7 +27,7 @@
             <div class="field form-group">
               <p>
                 <%= f.label :category %><br />
-                <%= f.select :category_id, Category.all.map{|main|[main.name,main.id]}, autofocus: true, class: "form-control" %><br />
+                <%= f.select :category_id, Category.all.collect{|c|[c.name, c.id]}, autofocus: true, class: "form-control", prompt: "Choose your Category" %><br />
                 <%= link_to "Cant find and appropriate Category?", new_category_path %><br />
               </p>
             </div>

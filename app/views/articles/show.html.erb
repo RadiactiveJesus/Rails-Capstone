@@ -1,25 +1,17 @@
 <div id="show" class="container jumbotron">
     <h1><%= @article.title %></h1>
     <p><%= @article.text %></p>
-    <h1 class="category badge bg-light">Category: <%= @article.category.name %></h1>
+    <h1 class="category badge bg-light">Category: <%= @article.categories.name %></h1>
     <small class="d-flex flex-start flex-column">
+    <p><%= @article.votes.count %> <%= (@article.votes.count) == 1 ? 'Vote' : 'Votes'%></p>
         <% if @article.image.attached? %>
             <%= image_tag @article.image.variant(resize: "400x400"), class: "imgfeature" %>
         <% end %>
-        <% if !current_user.voted_articles.ids.include?(@article.id) %>
-            <i>
-                <span class="votecount badge bg-light"> <%= @article.votes.count %> Votes </span>
-                <%= form_for(@vote)do | f | %>
-                <%= f.hidden_field :article_id, value: @article.id%>
-                <%= f.hidden_field :status, value: :true %>
-                <%= f.submit "Vote", class: "btn btn-primary"%>
-                <% end %>
-            </i>
+        <% pre_like = @article.votes.find { |vote| vote.user_id == current_user.id} %>
+        <% if pre_like %>
+            <%= button_to 'Unvote', article_vote_path(@article, pre_like), method: :delete %>
         <% else %>
-            <i>
-                <span class="votecount badge bg-light"> <%= @article.votes.count %> Votes </span><br>
-                <%= link_to 'Unvote', vote_path(current_user.votes.ids ) , class: "btn btn-primary", method: :delete %>
-            </i>
+            <%= button_to 'Vote', article_votes_path(@article), method: :post %>
         <% end %>
     </small>
 </div>

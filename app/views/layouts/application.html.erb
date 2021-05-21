@@ -35,7 +35,7 @@
         <form class="form-inline my-2 my-lg-0 ml-auto">
           <% if user_signed_in? %>
             <%= link_to "Write An Article",    new_article_path, class: "nav-link tex-white" %>
-            <%= link_to "Log Out",  destroy_user_session_path, method: :delete, class: "nav-link btn btn-outline-danger text-danger my-2 my-sm-0 mr-3" %>
+            <%= link_to "Log Out",  destroy_user_session_path, class: "nav-link btn btn-outline-danger text-danger my-2 my-sm-0 mr-3" %>
           <% else %>
             <%= link_to "Write An Article",    new_article_path, class: "nav-link text-white" %>
             <%= link_to "Log In",  new_user_session_path, class: "nav-link  my-2 my-sm-0 mr-3 btn btn-outline-danger text-danger" %>

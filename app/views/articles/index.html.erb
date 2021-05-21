@@ -3,7 +3,6 @@
 
 <div class="mother-feature">
     <div class="col-md-3 text-center">
-    <%# <%= image_tag @user.article.avatar.url(:thumb), class: 'avatar-img' %>
   </div>
 
     <h1>All Articles</h1>
@@ -18,6 +17,6 @@
     <% end %>
     </ul>
     <% @categories.each do |category| %>
-        <%= link_to category.name, articles_path(:main => category.id) %>
+        <%= link_to category.name, articles_path(:cate => category.id) %>
     <% end %>
 </div>

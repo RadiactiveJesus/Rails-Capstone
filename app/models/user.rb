@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :login
+  validates :username, presence: true, uniqueness: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,6 +28,16 @@ class User < ApplicationRecord
 
   def will_save_change_to_email?
     false
+  end
+
+  # Serialize string instead of BSON
+  def self.serialize_into_session(record)
+    [record.to_key.map(&:to_s), record.authenticatable_salt]
+  end
+
+  # Serialize string instead of BSON
+  def self.serialize_into_cookie(record)
+    [record.to_key.map(&:to_s), record.rememberable_value]
   end
      
 end

@@ -1,20 +1,17 @@
 Rails.application.routes.draw do
-  get 'votes/create'
-  get 'votes/destroy'
   root to: "ypages#home"
-  resources :votes, only: [:create, :destroy]
+  resources :ypages
   resources :categories
-  resources :articles
   resources :image_elements
-  devise_for :users
-  devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+  resources :articles do
+    resources :votes, only: [:create, :destroy]
   end
-  get 'ypages/new'
-  get 'ypages/create'
-  get 'ypages/update'
-  get 'ypages/edit'
-  get 'ypages/destroy'
-  get 'ypages/index'
-  get 'ypages/show'
+  
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations'}
+  devise_scope :user do
+    get '/users/sign_out', to: 'users/sessions#destroy'
+    get 'login', to: 'users/sessions#new'
+    get 'signup', to: 'users/registrations#new'
+  end
+  
 end
