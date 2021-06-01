@@ -6,11 +6,11 @@
     <hr>
     <h1 class="display-4">Articles</h1>
     <% if @articles.collect(&:image).detect(&:attached?) %>
-      <div class="featured p-3" style="background-image: url(<%= main_image %>)">
-        <%= image_tag main_image , class: "imgfeature" %>
+      <div class="featured p-3" style= "background-image: url(<%= rails_blob_url(main_image) %>);">
+        <%= image_tag main_image , class: "imgfeature" if main_article.image.attached? %>
           <div class="featured_text">
-            <p class="icons1"><%= main_article_title%></p>
-            <p>Votes: <%= count_votes %></>
+            <p class="icons1 text-muted"><%= main_article_title%></p>
+            <p class="text-muted">Votes: <%= count_votes %></>
           </div>
       </div>
     <% end %>

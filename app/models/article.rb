@@ -7,11 +7,6 @@ class Article < ApplicationRecord
     has_many :categories, through: :article_categories, dependent: :destroy
     validates_presence_of :title, :text, :author_id
     validates_length_of :title, :text, { minimum: 6 }
-    def self.featured_article
-        return unless Vote.any?
-        article_id = Vote.group(:article_id).count.max_by { |_k, v| v }.first
-        Article.find(article_id)
-    end
 
     def voted?(user)
         votes.find_by(user_id: user.id)
