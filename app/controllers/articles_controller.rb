@@ -13,7 +13,6 @@ class ArticlesController < ApplicationController
       @articles = Article.all
 
     end
-    @featured = Article.featured_article
     @categories = Category.all
   end
 

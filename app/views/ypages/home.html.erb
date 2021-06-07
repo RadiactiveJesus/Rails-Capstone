@@ -32,7 +32,7 @@
     </form>
     <div id="categories" class="mt-3">
       <% @categories.each do |category| %>
-        <%= link_to category.name, articles_path(:main => category.id) %>
+        <%= link_to category.name, articles_path(:cate => category.id) %>
       <% end %>
     </div>
   </div>

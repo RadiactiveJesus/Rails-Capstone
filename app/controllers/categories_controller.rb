@@ -5,7 +5,16 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
+    cate = params[:cate]
+
     @categories = Category.all
+    if !cate.nil?
+      @articles = Article.where(:category_id => cate)
+
+    else
+      @articles = Article.all
+
+    end
   end
 
   # GET /categories/1
