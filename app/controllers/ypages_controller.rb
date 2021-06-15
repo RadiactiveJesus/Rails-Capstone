@@ -1,8 +1,17 @@
 class YpagesController < ApplicationController
 
   def home
-    @categories= Category.all
-    @articles = Article.all  
+     
+     cate = params[:cate]
+
+    if !cate.nil?
+      @articles = Article.where(:name => cate)
+
+    else
+      @articles = Article.all
+
+    end
+    @categories = Category.all
   end
   
   def new

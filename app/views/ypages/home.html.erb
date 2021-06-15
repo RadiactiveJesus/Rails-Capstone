@@ -5,7 +5,7 @@
         <div class="featured p-3 col-9" style= "background-image: url(<%= rails_blob_url(main_image) %>);">
             <div class="featured_text">
               <p class="icons1 text-white"><%= main_article_title%></p>
-              <p class="text-white">Votes: <%= count_votes %></>
+              <p class="text-danger">Votes: <%= count_votes %></>
             </div>
         </div>
       <% else %>
@@ -16,21 +16,21 @@
         </div>
       <% end %>
         <div class="col-3" style= "background-image: url('/assets/img3.jpg');">
-          <p class="text-white">Sports</p>
+          <p class="text-white"><%= link_to 'Sports', articles_path(:cate => '2') %></p>
         </div>
     </div>
     <div class="second row">
       <div class="col-3" style= "background-image: url('/assets/img1.jpg');">
-        <p class="text-white"><%= link_to 'Shooters', articles_path(:name => "Shooters") %></p>
+        <p class="text-white"><%= link_to 'Shooters', articles_path(:cate => '1') %></p>
       </div>
       <div class="col-3" style= "background-image: url('/assets/img5.jpg');">
-        <p class="text-white">RPG</p>
+        <p class="text-white"><%= link_to 'RPG', articles_path(:cate => '3') %></p>
       </div>
       <div class="col-3" style= "background-image: url('/assets/img4.jpg');">
-        <p class="text-white">Adventure</p>
+        <p class="text-white"><%= link_to 'Adventure', articles_path(:cate => '4') %></p>
       </div>  
       <div class="col-3" style= "background-image: url('/assets/img.jpg');">
-        <p class="text-white">Classics</p>
+        <p class="text-white"><%= link_to 'Classics', articles_path(:cate => '5') %></p>
       </div>
     </div>  
     <hr>  
@@ -56,11 +56,6 @@
       <form class="lead mt-5">
             <%= link_to "Register NOW!",   new_user_registration_path, class: "btn btn-primary btn-lg" %>
       </form>
-      <div id="categories" class="mt-3">
-        <% @categories.each do |category| %>
-          <%= link_to category.name, articles_path(:cate => category.id) %>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>
