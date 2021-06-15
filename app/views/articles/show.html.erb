@@ -1,7 +1,7 @@
 <div id="show" class="container jumbotron">
     <h1><%= @article.title %></h1>
     <p><%= @article.text %></p>
-    <h1 class="category badge bg-light">Category: <%= @article.categories.name %></h1>
+    <h1 class="category badge bg-light">Category: <%= @article.category.name %></h1>
     <small class="d-flex flex-start flex-column">
     <p><%= @article.votes.count %> <%= (@article.votes.count) == 1 ? 'Vote' : 'Votes'%></p>
         <% if @article.image.attached? %>

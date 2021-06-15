@@ -2,8 +2,7 @@ class YpagesController < ApplicationController
 
   def home
     @categories= Category.all
-    main = params[:main]
-     @articles = Article.all  
+    @articles = Article.all  
   end
   
   def new
