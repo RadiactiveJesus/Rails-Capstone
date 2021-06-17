@@ -24,7 +24,7 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0 ml-auto">
-          <% if user_signed_in? %>
+          <% if !current_user.nil? %>
             <%= link_to "Write An Article",    new_article_path, class: "nav-link tex-white" %>
             <%= link_to "Log Out",  destroy_user_session_path, class: "nav-link btn btn-outline-danger text-danger my-2 my-sm-0 mr-3" %>
           <% else %>

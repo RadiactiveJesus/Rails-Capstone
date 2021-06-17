@@ -2,19 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.container.jumbotron {
-    background-color: black;
-    border: 1px solid black;
-}
 
-.container.jumbotron .category {
+
+.jumbotron .title {
     color: black;
-    border: 2px solid black;
     width: 400px;
-    font-size: 20px;
 }
 
-.container.jumbotron .imgfeature {
+.jumbotron .imgfeature {
     width: 400px;
 }
 

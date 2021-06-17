@@ -1,17 +1,28 @@
-<div id="show" class="container jumbotron">
-    <h1><%= @article.title %></h1>
-    <p><%= @article.text %></p>
-    <h1 class="category badge bg-light">Category: <%= @article.category.name %></h1>
-    <small class="d-flex flex-start flex-column">
-    <p><%= @article.votes.count %> <%= (@article.votes.count) == 1 ? 'Vote' : 'Votes'%></p>
-        <% if @article.image.attached? %>
-            <%= image_tag @article.image.variant(resize: "400x400"), class: "imgfeature" %>
-        <% end %>
+<div class="jumbotron">
+    <% if @article.image.attached? %>
+        <%= image_tag @article.image.variant(resize: "400x400"), class: "imgfeature mb-4" %>
+    <% end %>
+    <div class="card">
+        <ul id="articles" class="card-body">
+            <li class="text-body d-flex p-2 bd-highlight">
+                <h1 class="title"><%= @article.title %></h1>
+            </li>
+            <li class="text-muted d-flex p-2 bd-highlight">
+                <small>Category: <%= @article.category.name %></small>
+            </li>
+            <li class="text-body d-flex p-2 bd-highlight">
+                <h3><%= @article.text %></h3>
+            </li>
+        </ul>
+    </div>
+    <small class="d-flex flex-start flex-column mt-1">
         <% pre_like = @article.votes.find { |vote| vote.user_id == current_user.id} %>
         <% if pre_like %>
-            <%= button_to 'Unvote', article_vote_path(@article, pre_like), method: :delete %>
+            <p><%= @article.votes.count %> <%= (@article.votes.count) == 1 ? 'Vote' : 'Votes'%></p>
+            <%= button_to 'Unvote', article_vote_path(@article, pre_like), method: :delete, class: 'btn btn-primary' %>
         <% else %>
-            <%= button_to 'Vote', article_votes_path(@article), method: :post %>
+            <p><%= @article.votes.count %> <%= (@article.votes.count) == 1 ? 'Vote' : 'Votes'%></p>
+            <%= button_to 'Vote', article_votes_path(@article), method: :post, class: 'btn btn-primary ' %>
         <% end %>
     </small>
 </div>

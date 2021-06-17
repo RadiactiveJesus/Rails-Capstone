@@ -3,13 +3,14 @@
     <div class="row">
       <% if @articles.collect(&:image).detect(&:attached?) %>
         <div class="featured p-3 col-9" style= "background-image: url(<%= rails_blob_url(main_image) %>);">
-            <div class="featured_text">
-              <p class="icons1 text-white"><%= main_article_title%></p>
-              <p class="text-danger">Votes: <%= count_votes %></>
+            <div class="featured_text d-flex flex-column">
+              <h1 class="text-white mb-2"><%= main_article_title%></h1>
+              <small class="text-white"><%= link_to 'Read More', article_path(:id => main_article.id) %></small>
+              <small class="text-white">Votes:<%= count_votes%></small>
             </div>
         </div>
       <% else %>
-        <div class="featured p-3 col-9" style= "background-image: url('/assets/img2.jpeg');">
+        <div class="featured p-3 col-9" style= "background-image: url('/assets/img2.jpeg');"></p>
             <div class="featured_text">
               <p class="icons1 text-white">Default Article</p>
             </div>
@@ -43,13 +44,13 @@
       <div class="card">
         <ul id="articles" class="card-body">
           <% @articles.each do |article| %>
+            <hr id="art-between">
             <li class="text-body d-flex p-2 bd-highlight">
               <%= link_to article.title, article%>
             </li>
             <li class="text-muted d-flex p-2 bd-highlight">
               <%= article.text %>
             </li>
-            <hr id="art-between">
           <% end %>
         </ul>
       </div>

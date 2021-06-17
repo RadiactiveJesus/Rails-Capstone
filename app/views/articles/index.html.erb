@@ -2,19 +2,17 @@
 <p>Find me in app/views/articles/index.html.erb</p>
 
 <div class="mother-feature">
-    <div class="col-md-3 text-center">
-  </div>
-
-    <h1>All Articles</h1>
+  <hr>
     <ul id="articles">
-    <% @articles.each do |article| %>
-      <li>
-        <%= article.title %>
-      </li>
-      <li>
-        <%= article.text %>
-      </li>
-    <% end %>
+      <% @articles.each do |article| %>
+        <li>
+          <%= article.image %>
+        </li>
+        <li>
+          <%= article.title %>
+          <%= article.text %>
+        </li>
+      <% end %>
     </ul>
     <% @categories.each do |category| %>
         <%= link_to category.name, articles_path(:cate => category.id) %>
