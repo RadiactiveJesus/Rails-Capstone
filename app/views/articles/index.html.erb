@@ -1,19 +1,15 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
-
-<div class="mother-feature">
-  <hr>
-    <ul id="articles">
+<div>
+    <div class="row row-cols-4">
       <% @articles.each do |article| %>
-        <li>
-          <%= article.image %>
-        </li>
-        <li>
-          <%= article.title %>
-          <%= article.text %>
-        </li>
+        <div class="col" style= "background-image: url(<%= rails_blob_url(article.image) %>);"></div>
+        <div class="col d-flex flex-column">
+          <p class="magazine">Magazine</p>
+          <h4><%= article.title %></p>
+          <h6><%= article.text %></p>
+          <p class="d-flex"><%= link_to "Read More", article%></p>
+        </div>
       <% end %>
-    </ul>
+    </div>
     <% @categories.each do |category| %>
         <%= link_to category.name, articles_path(:cate => category.id) %>
     <% end %>

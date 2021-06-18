@@ -91,13 +91,17 @@ a:hover {
 }
 
 .featured_text.d-flex.flex-column {
-    margin-top: 260px;
+    margin-top: 230px;
 }
 
 .featured_text h1 {
     font-weight: bold;
     white-space: nowrap;
     text-align: left;
+}
+
+.text-white.main-article-text {
+    width: 80%;
 }
 
 
