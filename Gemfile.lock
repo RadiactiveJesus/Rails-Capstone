@@ -66,6 +66,22 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     ast (2.4.2)
+    aws-eventstream (1.1.1)
+    aws-partitions (1.469.0)
+    aws-sdk-core (3.114.3)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.44.0)
+      aws-sdk-core (~> 3, >= 3.112.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.96.1)
+      aws-sdk-core (~> 3, >= 3.112.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.3)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.7.5)
@@ -119,6 +135,7 @@ GEM
     io-like (0.3.1)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
+    jmespath (1.4.0)
     jsonapi-renderer (0.2.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -184,6 +201,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (6.0.4)
       actionpack (= 6.0.4)
       activesupport (= 6.0.4)
@@ -273,6 +295,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.10)
+  aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
@@ -290,6 +313,7 @@ DEPENDENCIES
   pgreset (~> 0.1.1)
   puma (~> 3.11)
   rails (~> 6.0.3, >= 6.0.3.2)
+  rails_12factor
   rubocop (>= 1.0, < 2.0)
   sass-rails (~> 5.0)
   selenium-webdriver
@@ -304,4 +328,4 @@ RUBY VERSION
    ruby 2.6.0p0
 
 BUNDLED WITH
-   2.0.2
+   2.2.20

@@ -2,7 +2,7 @@
 
 ![Hireable](https://img.shields.io/badge/Hireable-yes-success) ![](https://img.shields.io/badge/-Microverse%20projects-blueviolet)
 
-# Life'n'Style app build in rails (users, articles, categories, vote and authentication)
+# Gaming articles app build in rails (users, articles, categories, vote and authentication)
 
 The project is  build for the Ruby on Rails capstone and based on reddit articles functionalities website.
 
@@ -14,12 +14,8 @@ The project is  build for the Ruby on Rails capstone and based on reddit article
 
 ## Video Presentation:
 
-[Watch life'n'style](https://www.loom.com/share/40606e58c8d94ecb998cb7d7c0b1226f)
+[Watch Olympus Gaming](https://www.loom.com/share/10c156a94d6642ccb00148f2d7ccb4a1)
 
-
-## Link to Live host:
-
-[Life'n'Style](https://lyfenstyle.herokuapp.com/)
 
 ## Built With
 
@@ -76,8 +72,6 @@ You can navigate to `http://localhost:3000/` to see your application running<br>
 👤 **Rodolfo Llinás**
 
 - Github: [RadiactiveJesus](https://github.com/RadiactiveJesus)
-- Twitter: [uimarshall](https://twitter.com/uimarshall)
-- Linkedin: [Marshall Akpan](https://www.linkedin.com/in/marshall-akpan-19745526/)
 
 
 ## 🤝 Contributing
