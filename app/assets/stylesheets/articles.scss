@@ -2,27 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
 .jumbotron .title {
-    color: black;
-    width: 400px;
+  color: black;
+  width: 400px;
 }
 
 .jumbotron .imgfeature {
-    width: 400px;
+  width: 400px;
 }
 
 i {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: black;
 }
 
 .votecount.badge.bg-light {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: black;
 }
 
+.text-body.d-flex.p-2.bd-highlight.title {
+  width: 100%;
+}
 
+.read-more {
+  text-decoration: underline;
+}

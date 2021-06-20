@@ -14,7 +14,7 @@ class VotesController < ApplicationController
         flash[:warning] = 'Please, try again'
       end
     end
-    
+
     redirect_back fallback_location: @vote
   end
 
@@ -22,8 +22,8 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
     @vote.destroy
     respond_to do |format|
-        format.html { redirect_back fallback_location: @vote, notice: 'Unvoted.' }
-        format.json { head :no_content }
+      format.html { redirect_back fallback_location: @vote, notice: 'Unvoted.' }
+      format.json { head :no_content }
     end
   end
 
@@ -38,12 +38,10 @@ class VotesController < ApplicationController
   end
 
   def already_liked?
-    if Vote.find_by(user: @current_user, article: @article)
-      return true
-    end
+    return true if Vote.find_by(user: @current_user, article: @article)
   end
 
   def find_like
     @like = @article.votes.find(params[:id])
- end
+  end
 end

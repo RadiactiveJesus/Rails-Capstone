@@ -1,37 +1,28 @@
 class YpagesController < ApplicationController
-
   def home
-     
-     cate = params[:cate]
+    cate = params[:cate]
 
-    if !cate.nil?
-      @articles = Article.where(:name => cate)
+    @articles = if cate.nil?
+                  Article.all
 
-    else
-      @articles = Article.all
+                else
+                  Article.where(name: cate)
 
-    end
+                end
     @categories = Category.all
   end
-  
-  def new
-  end
 
-  def create
-  end
+  def new; end
 
-  def update
-  end
+  def create; end
 
-  def edit
-  end
+  def update; end
 
-  def destroy
-  end
+  def edit; end
 
-  def index
-  end
+  def destroy; end
 
-  def show
-  end
+  def index; end
+
+  def show; end
 end

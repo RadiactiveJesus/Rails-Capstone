@@ -42,8 +42,8 @@ The project is  build for the Ruby on Rails capstone and based on reddit article
 
 ## Feature upgrades:
 
-- Create the frontend where users can create and write an article.
-- signup and logout.
+- Create the frontend where users can create and write an article uploading images.
+- Full Authentication system.
 
 ## Prerequisities
 
@@ -55,29 +55,27 @@ To get this project up and running locally, you must have ruby, sqlite3, postgre
 
 **Step 1**<br>
 Navigate through the local folder where you want to clone the repository and run
-`git clone https://github.com/uimarshall/rails-capstone-LifeStyles.git`.<br>
+`git clone git@github.com:RadiactiveJesus/Rails-Capstone.git`.<br>
 **Step 2**<br>
-Run `cd rails-capstone-LifeStyles`.<br>
+Run `cd Rails-Capstone`.<br>
 **Step 3**<br>
 Run `bundle install` to install the gems from the `Gemfile`.<br>
 **Step 4**<br>
-Run `yarn install` to install the packages from the `package.json` file.<br>
-**Step 5**<br>
 Run `rake db:create` to create your local database.
-**Step 6**<br>
+**Step 5**<br>
 Run `rake db:migrate` to migrate your local database.
-**Step 7**<br>
+**Step 6**<br>
 Run `rake db:seed` to migrate your local database.
+**Step 7**<br>
+Run `rails server` to start the rails server.
 **Step 8**<br>
-Run `rails serve` to start the rails server.
-**Step 9**<br>
 You can navigate to `http://localhost:3000/` to see your application running<br>
 
 ## Authors
 
 👤 **Rodolfo Llinás**
 
-- Github: [uimarshall](https://github.com/uimarshall)
+- Github: [RadiactiveJesus](https://github.com/RadiactiveJesus)
 - Twitter: [uimarshall](https://twitter.com/uimarshall)
 - Linkedin: [Marshall Akpan](https://www.linkedin.com/in/marshall-akpan-19745526/)
 
@@ -86,7 +84,7 @@ You can navigate to `http://localhost:3000/` to see your application running<br>
 
 Our favourite contributions are those that help us improve the project, whether with a contribution, an issue, or a feature request!
 
-Feel free to check the [issues page](https://github.com/uimarshall/rails-capstone-LifeStyles/issues) to either create an issue or help us out by fixing an existing one.
+Feel free to check the [issues page](https://github.com/RadiactiveJesus/Rails-Capstone/issues) to either create an issue or help us out by fixing an existing one.
 
 ## Show your support
 
