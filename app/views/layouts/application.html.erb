@@ -20,7 +20,19 @@
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <%= link_to 'Categories', categories_path, class: "nav-link text-white" %>
+            <%= link_to 'Sports', articles_path(:cate => '1'), class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Shooters', articles_path(:cate => '2'), class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'RPG', articles_path(:cate => '3'), class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Adventure', articles_path(:cate => '4'), class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Classics', articles_path(:cate => '5'), class: "nav-link text-white" %>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0 ml-auto">

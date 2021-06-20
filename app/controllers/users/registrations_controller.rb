@@ -18,8 +18,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # We call the key 'user_id' stored in the session hash
       session[:user_id] = @user.id
       session[:username] = @user.username
-      
 
+      sign_in(@user) 
+      
       redirect_to root_path, notice: 'Your account was successfully created'
 
     else

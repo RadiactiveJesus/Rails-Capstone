@@ -1,13 +1,23 @@
 <div>
     <div class="row row-cols-4">
-      <% @articles.each do |article| %>
-        <div class="col" style= "background-image: url(<%= rails_blob_url(article.image) %>);"></div>
-        <div class="col d-flex flex-column">
-          <p class="magazine">Magazine</p>
-          <h4><%= article.title %></p>
-          <h6><%= article.text %></p>
-          <p class="d-flex"><%= link_to "Read More", article%></p>
-        </div>
+      <% @articles.each_with_index do |article, index| %>
+        <% if index == 0 || index == 3 %>
+          <div class="col d-flex flex-column ml-3 mt-1">
+            <p class="magazine">Magazine</p>
+            <h4><%= article.title %></p>
+            <h6><%= article.text %></p>
+            <p class="d-flex"><%= link_to "Read More", article%></p>
+          </div>
+          <div class="col" style= "background-image: url(<%= rails_blob_url(article.image) %>);"></div>          
+        <% else %>
+          <div class="col" style= "background-image: url(<%= rails_blob_url(article.image) %>);"></div>
+          <div class="col d-flex flex-column">
+            <p class="magazine">Magazine</p>
+            <h4><%= article.title %></p>
+            <h6><%= article.text %></p>
+            <p class="d-flex"><%= link_to "Read More", article%></p>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <% @categories.each do |category| %>
