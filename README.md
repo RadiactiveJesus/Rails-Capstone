@@ -61,11 +61,11 @@ Run `cd Rails-Capstone`.<br>
 **Step 3**<br>
 Run `bundle install` to install the gems from the `Gemfile`.<br>
 **Step 4**<br>
-Run `rake db:create` to create your local database.
+Run `rails db:create` to create your local database.
 **Step 5**<br>
-Run `rake db:migrate` to migrate your local database.
+Run `rails db:migrate` to migrate your local database.
 **Step 6**<br>
-Run `rake db:seed` to migrate your local database.
+Run `rails db:seed` to migrate your local database.
 **Step 7**<br>
 Run `rails server` to start the rails server.
 **Step 8**<br>
