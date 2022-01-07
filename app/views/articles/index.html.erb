@@ -1,0 +1,30 @@
+<div>
+    <div class="row row-cols-4">
+      <% @articles.each_with_index do |article, index| %>
+        <% if index == 2 || index == 3 %>
+          <div class="col d-flex flex-column">
+            <p class="magazine ml-2 mt-2">Magazine</p>
+            <h4 class="ml-2"><%= article.title %></h4>
+            <h6 class="ml-2"><%= truncate(article.text, :length => 270) %></h6>
+            <p class="d-flex ml-2 read-more"><%= link_to "Read More", article%></p>
+          </div>
+          <div class="col" style= "background-image: url(<%= rails_blob_url(article.image) %>);"></div>          
+        <% else %>
+          <% if @articles.where(title: article.title).collect(&:image).detect(&:attached?) %>
+            <div class="col" style= "background-image: url(<%= rails_blob_url(article.image) %>);"></div>
+          <% else %>
+             <div class="col" style= "background-image: url('/assets/img3.jpg');"></div>
+          <% end %>
+          <div class="col d-flex flex-column">
+            <p class="magazine mt-2">Magazine</p>
+            <h4><%= article.title %></h4>
+            <h6><%= truncate(article.text, :length => 270) %></h6>
+            <p class="d-flex read-more"><%= link_to "Read More", article%></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <% @categories.each do |category| %>
+        <%= link_to category.name, articles_path(:cate => category.id) %>
+    <% end %>
+</div>

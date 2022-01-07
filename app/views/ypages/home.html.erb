@@ -1,0 +1,90 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="main">
+    <div class="cats">
+      <div class="row">
+        <% if @articles.collect(&:image).detect(&:attached?) %>
+          <div class="featured p-3 col-9" style= "background-image: url(<%= rails_blob_url(main_article.image) %>);">
+              <div class="featured_text d-flex flex-column ml-4">
+                <h1 class="text-white mb-2"><%= main_article.title%></h1>
+                <small class="text-white main-article-text text-wrap"><%= truncate(main_article.text, :length => 185)%></small>
+                <small class="text-white"><%= link_to 'Read More', article_path(:id => main_article.id), class:"read-more" %></small>
+              </div>
+          </div>
+        <% else %>
+          <div class="featured p-2 col-9" style= "background-image: url('/assets/img2.jpeg');"></div>
+        <% end %>
+        <% if @articles.where(category_id: '1').collect(&:image).detect(&:attached?) %>
+          <div class="col-3" style= "background-image: url(<%= rails_blob_url(sports_article.image) %>);">
+            <p class="text-white"><%= link_to 'Sports', articles_path(:cate => '1') %></p>
+          </div>
+        <% else %>
+          <div class="col-3" style= "background-image: url('/assets/img3.jpg');">
+            <p class="text-white"><%= link_to 'Sports', articles_path(:cate => '1') %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="second row">
+        <% if @articles.where(category_id: '2').collect(&:image).detect(&:attached?) %>
+          <div class="col-3" style= "background-image: url(<%= rails_blob_url(shooters_article.image) %>);">
+            <p class="text-white ml-3"><%= link_to 'Shooters', articles_path(:cate => '2') %></p>
+          </div>
+        <% else %>
+          <div class="col-3" style= "background-image: url('/assets/img1.jpg');">
+            <p class="text-white ml-3"><%= link_to 'Shooters', articles_path(:cate => '2') %></p>
+          </div>
+        <% end %>
+        <% if @articles.where(category_id: '3').collect(&:image).detect(&:attached?) %>
+          <div class="col-3" style= "background-image: url(<%= rails_blob_url(rpg_article.image) %>);">
+            <p class="text-white"><%= link_to 'RPG', articles_path(:cate => '3') %></p>
+          </div>
+        <% else %>
+          <div class="col-3" style= "background-image: url('/assets/img5.jpg');">
+            <p class="text-white"><%= link_to 'RPG', articles_path(:cate => '3') %></p>
+          </div>
+        <% end %>
+        <% if @articles.where(category_id: '4').collect(&:image).detect(&:attached?) %>
+          <div class="col-3" style= "background-image: url(<%= rails_blob_url(adventure_article.image) %>);">
+            <p class="text-white"><%= link_to 'Adventure', articles_path(:cate => '4') %></p>
+          </div> 
+        <% else %> 
+          <div class="col-3" style= "background-image: url('/assets/img4.jpg');">
+            <p class="text-white"><%= link_to 'Adventure', articles_path(:cate => '4') %></p>
+          </div> 
+        <% end %>
+        <% if @articles.where(category_id: '5').collect(&:image).detect(&:attached?) %>
+          <div class="col-3" style= "background-image: url(<%= rails_blob_url(classics_article.image) %>);">
+            <p class="text-white"><%= link_to 'Classics', articles_path(:cate => '5') %></p>
+          </div>
+        <% else %> 
+          <div class="col-3" style= "background-image: url('/assets/img.jpg');">
+            <p class="text-white"><%= link_to 'Classics', articles_path(:cate => '5') %></p>
+          </div>
+        <% end %>
+      </div> 
+    </div>
+    <hr>
+    <div class="text-center">    
+      <h1 class="display-3">Olympus Gaming Hub</h1>
+      <p class="lead">Get the latest releases on gaming. Vote for your favorite games and explore new ones on our category based engine</p>
+      <p class="lead">Welcome</p>
+      <hr>
+      <h1 class="display-4">Forum</h1>
+      <div class="card text-left">
+        <ul id="articles" class="card-body">
+          <% @articles.each do |article| %>
+            <hr id="art-between">
+            <li class="text-body d-flex p-2 bd-highlight">
+              <%= link_to article.title, article%>
+            </li>
+            <li class="text-muted d-flex p-2 bd-highlight">
+              <%= truncate(article.text, :length => 350) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <form class="lead mt-5">
+            <%= link_to "Register NOW!",   new_user_registration_path, class: "btn btn-primary btn-lg" %>
+      </form>
+    </div>
+  </div>
+</div>

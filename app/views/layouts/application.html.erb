@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Capstone</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="//fonts.googleapis.com/css2?family=Open+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body  class="<%= controller_name %> <%= action_name %>">
+      <nav class="navbar navbar-expand-lg navbar">
+      <%= link_to root_path, class: "navbar-brand text-white"  do %>
+        <i class="fas fa-quidditch"></i>Olympus
+      <% end %>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <%= link_to 'Sports', articles_path(:cate => '1'), class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Shooters', articles_path(:cate => '2'), class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'RPG', articles_path(:cate => '3'), class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Adventure', articles_path(:cate => '4'), class: "nav-link text-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Classics', articles_path(:cate => '5'), class: "nav-link text-white" %>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+          <% if !current_user.nil? %>
+            <%= link_to "Write An Article",    new_article_path, class: "nav-link tex-white" %>
+            <%= link_to "Log Out",  destroy_user_session_path, class: "nav-link btn btn-outline-danger text-danger my-2 my-sm-0 mr-3" %>
+          <% else %>
+            <%= link_to "Log In",  new_user_session_path, class: "nav-link  my-2 my-sm-0 mr-3 btn btn-outline-danger text-danger" %>
+            <%= link_to "Register",   new_user_registration_path, class: "nav-link  my-2 my-sm-0 btn btn-outline-danger text-danger" %>
+          <% end %>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <% flash.each do | type, msg | %>
+        <%= content_tag :div, msg, class: "mt-3 alert alert-#{type}" %>
+      <%end%>
+    </div>
+
+    <%= yield %>
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <%= link_to root_path, class: "navbar-brand text-white"  do %>
+            <i class="fas fa-quidditch"></i>Olympus
+      <% end %>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "Privacy Policy", root_path, class: "nav-link rules" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Terms & Conditions", root_path, class: "nav-link rules" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Copyright 2020. All rights reserved", root_path, class: "nav-link" %>
+        </li>
+      </ul>
+        <!-- Nav Icons -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-2 search-icon">
+            <%= link_to "<i class='fa fa-twitter social-icons text-white'></i>".html_safe, '#' %>
+          </li>
+          <li class="nav-item mx-2 search-icon">
+            <%= link_to "<i class='fa fa-instagram social-icons text-white'></i>".html_safe, '#' %>
+          </li>
+          <li class="nav-item mx-2 search-icon">
+            <%= link_to "<i class='fa fa-facebook social-icons text-white'></i>".html_safe, '#' %>
+          </li>
+        </ul>
+    </nav>
+  </body>
+</html>

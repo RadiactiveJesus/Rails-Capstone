@@ -1,0 +1,110 @@
+// Place all the styles related to the ypages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#articles .text-body {
+  font-size: 30px;
+  list-style-type: none;
+  font-weight: bolder;
+  color: black;
+  text-decoration: none !important;
+}
+
+a {
+  color: black;
+  text-decoration: none !important;
+}
+
+a:hover {
+  cursor: pointer;
+  color: black;
+  text-decoration: underline;
+}
+
+#articles .text-muted {
+  list-style-type: none;
+}
+
+#art-between {
+  border: none;
+  height: 1px;
+
+  /* Set the hr color */
+  color: rgb(107, 99, 99); /* old IE */
+  background-color: rgb(107, 99, 99); /* Modern Browsers */
+}
+
+.form-inline.my-2.my-lg-0.ml-auto a {
+  color: white;
+}
+
+.featured {
+  height: 70vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+}
+
+.imgfeature {
+  width: 100%;
+  height: 100%;
+}
+
+.featured.p-3.col-9 {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.col-3 {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.second {
+  height: 250px;
+}
+
+.col-3 p {
+  margin-top: 10px;
+  border-bottom: 2px solid yellow;
+  display: inline-block;
+  font-weight: bold;
+  text-align: left;
+}
+
+.main {
+  margin-top: -64px;
+  width: 100%;
+}
+
+.featured_text small {
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: left;
+  width: 100px;
+}
+
+.featured_text.d-flex.flex-column {
+  margin-top: 230px;
+}
+
+.featured_text h1 {
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.text-white.main-article-text {
+  width: 80%;
+}
+
+.read-more:hover {
+  color: rgb(228, 228, 26);
+}
+
+.row {
+  width: 1297px;
+}
