@@ -33,6 +33,7 @@ gem 'figaro', '~> 1.2'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 gem 'paperclip', '~> 6.1'
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'rake', '13.0.6'
 
 # Use ActiveStorage variant
 gem 'image_processing', '~> 1.2'
@@ -68,7 +69,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
