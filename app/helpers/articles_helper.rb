@@ -26,5 +26,4 @@ module ArticlesHelper
   def classics_article
     Article.where(category_id: '5').last
   end
-
 end
