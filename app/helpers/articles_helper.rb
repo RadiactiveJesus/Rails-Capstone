@@ -7,15 +7,24 @@ module ArticlesHelper
     main_article.votes.count
   end
 
-  def main_image
-    main_article.image
+  def sports_article
+    Article.where(category_id: '1').last
   end
 
-  def main_article_title
-    main_article ? main_article.title : 'No Main Articles so far'
+  def shooters_article
+    Article.where(category_id: '3').last
   end
 
-  def main_article_text
-    main_article.text
+  def rpg_article
+    Article.where(category_id: '3').last
   end
+
+  def adventure_article
+    Article.where(category_id: '4').last
+  end
+
+  def classics_article
+    Article.where(category_id: '5').last
+  end
+
 end

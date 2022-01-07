@@ -10,7 +10,11 @@
           </div>
           <div class="col" style= "background-image: url(<%= rails_blob_url(article.image) %>);"></div>          
         <% else %>
-          <div class="col" style= "background-image: url(<%= rails_blob_url(article.image) %>);"></div>
+          <% if @articles.where(title: article.title).collect(&:image).detect(&:attached?) %>
+            <div class="col" style= "background-image: url(<%= rails_blob_url(article.image) %>);"></div>
+          <% else %>
+             <div class="col" style= "background-image: url('/assets/img3.jpg');"></div>
+          <% end %>
           <div class="col d-flex flex-column">
             <p class="magazine mt-2">Magazine</p>
             <h4><%= article.title %></h4>

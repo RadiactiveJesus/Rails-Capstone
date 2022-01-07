@@ -6,7 +6,7 @@ class YpagesController < ApplicationController
                   Article.all
 
                 else
-                  Article.where(name: cate)
+                  Article.where(category_id: cate)
 
                 end
     @categories = Category.all
